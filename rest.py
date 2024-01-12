@@ -9,4 +9,4 @@ def hanoi(n, a, b, c):
         print(f"{a} {b}")
 
 n = int(input(" "))
-hanoi(n, 'A', 'B', 'C')
+hanoi(n, 'A', 'B', 'C')        
