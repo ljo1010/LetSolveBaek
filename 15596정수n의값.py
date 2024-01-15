@@ -1,5 +1,5 @@
-def sum(a):
- ans = []
- for i in a:
-  ans *= i
- return ans
+def total_sum(n):
+    sum = 0
+    for i in range(len(n)):
+        a += i[i]
+    return a
