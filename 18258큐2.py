@@ -2,29 +2,29 @@ import sys
 
 n = int(sys.stdin.readline())
 
-stack = []
+queue = []
 
 for i in range(n):
     command = sys.stdin.readline().split()
 
     if command[0] == 'push':
         b = int(command[1])
-        stack.append(b)
+        queue.append(b)
     elif command[0] == 'pop':
-        if len(stack) == 0:
+        if len(queue) == 0:
             print(-1)
         else:
-            print(stack[len(stack) - 1])
-            stack.pop()
+            print(queue[len(queue)])
+            queue.pop()
     elif command[0] == 'size':
-        print(len(stack))
+        print(len(queue))
     elif command[0] == 'empty':
-        if len(stack) == 0:
+        if len(queue) == 0:
             print(1)
         else:
             print(0)
     elif command[0] == 'top':
-        if len(stack) == 0:
+        if len(queue) == 0:
             print(-1)
         else:
-            print(stack[len(stack) - 1])
+            print(queue[len(queue) - 1])
