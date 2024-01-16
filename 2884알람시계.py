@@ -1,5 +1,10 @@
-hour, min =map(int, input().split())
+hour, mint =map(int, input().split())
 
-if min == 60:
-    hour += 1
-    min = 0
+if mint < 45:
+    if hour ==0:
+        hour = 23
+        mint += 60
+    else:
+        hour -= 1
+        mint += 60
+print(hour, mint-45)

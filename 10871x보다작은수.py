@@ -1,5 +1,3 @@
-a, b = map(int, input().split())
-
-for i in range(a):
-    lis = []
-    
+n = int(input())
+result = int((n*(n+1))/2)
+print(result)

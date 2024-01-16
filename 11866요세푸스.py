@@ -11,4 +11,4 @@ while len(deq) != 0:
         deq.append(deq.popleft())
     
     res.append(str(deq.popleft()))
-print('<'+','.join(res)+'>')
+print('<'+', '.join(res)+'>')
