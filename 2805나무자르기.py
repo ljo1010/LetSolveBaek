@@ -1,32 +1,37 @@
-import sys
-n = int(sys.stdin.readline())
+n, m = map(int, input().split())
+trees = list(map(int, input().split()))
 
-queue = []
-for i in range(n):
-    command = sys.stdin.readline().split()
+start, end = 1, sum(trees)
 
-    if command[0] == 'push':
-        queue.append(command[1])
-        print(queue)
-    elif command[0] == 'pop':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue.pop(0))
-    elif command[0] == 'size':
-        print(len(queue))
-    elif command[0] == 'empty':
-        if(len(queue)) == 0:
-            print(1)
-        else:
-            print(0)
-    elif command[0] == 'front':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue[-1])
-    elif command[0] == 'back':
-        if len(queue) == 0:
-            print(-1)
-        else:
-            print(queue[0])
+while start <= end:
+    mid = (start + end) // 2
+    cnt = 0
+
+    for tree in trees:
+        if tree > mid:
+            cnt += tree - mid
+    if cnt >= m:
+        start = mid + 1
+    else:
+        end = mid - 1
+print(end)
+
+# #중간값을 찾아서 그것의 최댓값을 구하는 문제임
+# n, m = map(int, input().split())
+# # 나무들의 리스트
+# trees = list(map(int, input().split())) 
+
+# start, end =1, sum(trees)
+
+# while start <= end:
+#     mid = (start + end) // 2
+#     cnt = 0
+    
+#     for tree in trees:
+#         if tree > mid:
+#             cnt += tree - mid
+#         if cnt >= m:
+#             start = mid + 1
+#         else: end = mid - 1
+# print(end)
+

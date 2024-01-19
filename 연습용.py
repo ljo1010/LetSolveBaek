@@ -1,42 +1,45 @@
-def nqueen(depth):     
-  global result
-  
-  # depth가 N일 때 > 모든 퀸을 다 놓은 것
-  if depth == N : 
-    result += 1 
-    return 
+n =int(input())
+check_row = [0 for i in range(n)]
+check_leftcross = [0 for i in range(n*2)]
+check_rightcross = [0 for i in range(n*2)]
+rep = 0
 
-  # depth별 반복문 
-  for i in range(N):
+def backtracking(cur):
+    if cur == n:
+        global rep
+        rep += 1
+        return 0
+    for i in range(n):
+        if check_row[i] or check_leftcross[n+cur-i] or check_rightcross[cur + i]:
+            continue
+        else:
+            check_row[i] = 1
+            check_leftcross[n+cur-i] = 1
+            check_rightcross[cur+i] = 1
+            backtracking(cur+1)
+            check_row[i] = 0
+            check_leftcross[n+cur-i] = 0
+            check_rightcross[cur+i] = 0
 
-    # 해당 depth를 visited 하지 않았을 때 
-    if visited[i] == False : 
-      board[depth] = i     # (depth, i)에 퀸 올리기 (여기서 depth는 raw, i는 column에 해당
-      
-      if check(depth):
-        visited[i] = True
-        nqueen(depth + 1)     # 그 다음 열로 넘어감 
-        visited[i] = False    # 다시 false로 설정해 백트래킹 
+#일반적으로 짝수일때랑 홀수일때랑 다르다.
+for i in range(n//2):
+    check_row[i] = 1
+    check_leftcross[n-i] = 1
+    check_rightcross[i] = 1
+    backtracking(1)
+    check_row[i] = 0
+    check_leftcross[n-i] = 0
+    check_rightcross[i] = 0
+rep = rep*2
 
+if n%2:
+    i = n // 2
+    check_row[i] = 1
+    check_leftcross[n-i] = 1
+    check_rightcross[i] = 1
+    backtracking(1)
+    check_row[i] = 0
+    check_leftcross[n-i] = 0
+    check_rightcross[i] = 0
 
-# 모든 열에대해 퀸과 대각선, 좌우에 위치해 있는지 체크 
-def check(n):
-  for i in range(n):
-
-    # 좌우에 있거나, 대각선에 있다면 
-    # TODO(여기서 기존 queen이 어떻게 적재되고 있는걸까?)
-    if (board[n] == board[i]) or (n-i == abs(board[n] - board[i])):
-      return False
-
-  return True
-
-# main 
-if __name__ == '__main__':
-  N = int(input())    # dfs의 depth에 해당함 
-  # depth별 적재 
-  board = [0] * N     # 1차원 리스트로 적재 
-  visited = [False] * N
-  result = 0 
-
-  nqueen(0)
-  print(result)
+print(rep)

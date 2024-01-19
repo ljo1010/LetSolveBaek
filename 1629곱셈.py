@@ -27,6 +27,5 @@ def DaC(a, b):
     if b % 2 == 0:
         return temp * temp % C
     else:
-        return temp * temp * a % C
+        return (temp * temp * a) % C
 print(DaC(A, B))
-# 숏 코딩 print(pow(*map(int,input().split())))
