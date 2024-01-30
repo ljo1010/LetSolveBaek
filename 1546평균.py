@@ -1,4 +1,5 @@
-a, b, c = map(float, input().split())
-high_score = max(a, b, c)
-
-print()
+n = int(input())
+aver = list(map(int, input().split()))
+my_max = max(aver)
+sum = sum(aver)
+print(sum*100/my_max/int(n))

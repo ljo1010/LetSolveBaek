@@ -1,26 +1,25 @@
-class ListStack:
-    
-    def __init__(self) -> None:
-        self.__stack = []
-    
-    def push(self, x):
-        self.__stack.append(x)
+import sys
+sys.setrecursionlimit(10**6)
+num_list = []
 
-    def pop(self):
-        self.__stack.pop()
+while True:
+    try:
+        num = int(input())
+        num_list.append(num)
+    except:
+        break
+
+def postorder(first, end):
+    if first > end:
+        return
+    mid = end + 1
+    for i in range(first+1, end+1):
+        if num_list[first] < num_list[i]:
+            mid = i
+            break
     
-    def size(self):
-        self.__stack.size()
+    postorder(first+1, mid - 1)
+    postorder(mid, end)
+    print(num_list[first])
 
-    def empty(self):
-        return not bool(self.__stack)
-
-    def top(self):
-        if self.empty():
-            return None
-        else:
-            return self.__stack[-1]
-        
-n = int(input())
-for i in range(n):
-    commend = str(input())
+postorder(0, len(num_list)-1)

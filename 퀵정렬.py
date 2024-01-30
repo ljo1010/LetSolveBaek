@@ -1,18 +1,25 @@
-import math
+import sys
+input = sys.stdin.readline
+ 
+n = int(input())
 
-a = int(input())
-num = map(int, input().split())
-prime_num = 0
+visited = [False] * (n+1)
+tree = [[] for _ in range(n+1)]
+ans = [0] * (n+1)
 
-def is_prime_number(x):
-    error = 0
-    if x == 1:
-        return None
-    for i in range(2, int(math.sqrt(x))+1):
-        if x % i == 0:
-            error += 1
-            return error
-        else:
-            prime_num += 1
-print(is_prime_number(prime_num))
+for _ in range(1, n):
+    n1, n2 = map(int, input().split())
+    tree[n1].append(n2)
+    tree[n2].append(n1)
 
+def DFS(n):
+    visited[n] = True
+    for i in tree[n]:
+        if not visited[i]:
+            ans(1) = n
+            DFS(i)
+
+DFS(1)
+
+for i in range(2, n+1):
+    print(ans[i])

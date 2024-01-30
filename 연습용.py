@@ -1,45 +1,31 @@
-n =int(input())
-check_row = [0 for i in range(n)]
-check_leftcross = [0 for i in range(n*2)]
-check_rightcross = [0 for i in range(n*2)]
-rep = 0
+import sys
+from queue import deque
 
-def backtracking(cur):
-    if cur == n:
-        global rep
-        rep += 1
-        return 0
-    for i in range(n):
-        if check_row[i] or check_leftcross[n+cur-i] or check_rightcross[cur + i]:
-            continue
-        else:
-            check_row[i] = 1
-            check_leftcross[n+cur-i] = 1
-            check_rightcross[cur+i] = 1
-            backtracking(cur+1)
-            check_row[i] = 0
-            check_leftcross[n+cur-i] = 0
-            check_rightcross[cur+i] = 0
+n, m, v = map(int, input().split())
+node = [[] for _ in range(n+1)]
+visited = [False] * (n+1)
+dfs = []
+bfs = []
 
-#일반적으로 짝수일때랑 홀수일때랑 다르다.
-for i in range(n//2):
-    check_row[i] = 1
-    check_leftcross[n-i] = 1
-    check_rightcross[i] = 1
-    backtracking(1)
-    check_row[i] = 0
-    check_leftcross[n-i] = 0
-    check_rightcross[i] = 0
-rep = rep*2
+for i in range(m):
+    a, b = map(int, input().split())
+    node[a].append(b)
+    node[b].append(a)
 
-if n%2:
-    i = n // 2
-    check_row[i] = 1
-    check_leftcross[n-i] = 1
-    check_rightcross[i] = 1
-    backtracking(1)
-    check_row[i] = 0
-    check_leftcross[n-i] = 0
-    check_rightcross[i] = 0
+for j in range(n+1):
+    node[j].sort()
 
-print(rep)
+def DFS(v):
+    visited[v] = True
+    dfs.append(v):
+    for i in node[v]:
+        if(visited[i] == 0):
+            DFS(i)
+
+def BFS(v):
+    visited = True
+    bfs.append(v)
+    queue = dequeu([v])
+
+    while queue:
+        curr = queue.popleft()

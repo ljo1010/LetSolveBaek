@@ -1,37 +1,31 @@
 import sys
-from collections import deque
+sys.setrecursionlimit(10000)
+input = sys.stdin.readline
 
-n = int(sys.stdin.readline())
+N = int(input())
+M = int(input())
 
-queue = deque()
+graph = [[] for _ in range(N+1)]	
 
-for i in range(n):
-    command = sys.stdin.readline().split()
+visited = [False] * (N+1)
 
-    if command[0].lower() == 'push':
-        b = int(command[1])
-        queue.append(b)
-    elif command[0].lower() == 'pop':
-        if not queue:
-            print(-1)
-        else:
-            front_element = queue.popleft()
-            print(front_element)
-    elif command[0].lower() == 'size':
-        print(len(queue))
-    elif command[0].lower() == 'empty':
-        if not queue:
-            print(1)
-        else:
-            print(0)
-    elif command[0].lower() == 'front':
-        if not queue:
-            print(-1)
-        else:
-            print(queue[0])
-    elif command[0].lower() == 'back':
-        if not queue:
-            print(-1)
-        else:
-            back_element = queue[-1]
-            print(back_element)
+def DFS(v):
+    visited[v] = True
+    global count
+    count += 1
+    for i in graph[v]:
+        if not visited[i]:
+            DFS(i)
+
+for i in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)				# 양방향
+
+
+count = -1
+
+
+
+DFS(1)
+print(count)

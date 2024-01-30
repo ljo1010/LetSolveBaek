@@ -1,0 +1,1 @@
+{"name":"Local: 2178미로","url":"c:\\Users\\82105\\Documents\\GitHub\\LetSolveBaek\\2178미로.py","tests":[{"id":1706079454763,"input":"4 6\n101111\n101010\n101011\n111011","output":"15"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\82105\\Documents\\GitHub\\LetSolveBaek\\2178미로.py","group":"local","local":true}

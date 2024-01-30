@@ -19,4 +19,4 @@ def move(num, start, dest):
 
     if num > 1:
         move(num-1, 6-start-dest, dest)
-print(move(n, 1, 3))
+    print(move(num, 1, 3))
