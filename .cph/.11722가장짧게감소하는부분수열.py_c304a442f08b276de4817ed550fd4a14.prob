@@ -1,0 +1,1 @@
+{"name":"Local: 11722가장짧게감소하는부분수열","url":"c:\\Users\\82105\\Documents\\GitHub\\LetSolveBaek\\11722가장짧게감소하는부분수열.py","tests":[{"id":1706681780351,"input":"6\n10 30 10 20 20 10","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\82105\\Documents\\GitHub\\LetSolveBaek\\11722가장짧게감소하는부분수열.py","group":"local","local":true}
